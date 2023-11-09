@@ -31,8 +31,8 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
 
                 ViewBag.title = value.Select(x => x.title).FirstOrDefault();
                 ViewBag.subtitle = value.Select(x => x.subTitle).FirstOrDefault();
-                ViewBag.description1 = value.Select(x => x.decription1).FirstOrDefault();
-                ViewBag.description2 = value.Select(x => x.decription2).FirstOrDefault();
+                ViewBag.description1 = value.Select(x => x.description1).FirstOrDefault();
+                ViewBag.description2 = value.Select(x => x.description2).FirstOrDefault();
 
                 return View(value2);
             }
