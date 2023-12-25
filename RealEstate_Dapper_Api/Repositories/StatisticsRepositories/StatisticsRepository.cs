@@ -34,72 +34,142 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public int ApartmentCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT COUNT(*) FROM Product WHERE ProductCategory = 2";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public decimal AvarageProductByRent()
+        public decimal AvarageProductPriceByRent()
         {
-            throw new NotImplementedException();
+            string query = "SELECT AVG(Price) FROM Product WHERE Type LIKE '%Kira%'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
-        public decimal AvarageProductBySale()
+        public decimal AvarageProductPriceBySale()
         {
-            throw new NotImplementedException();
+            string query = "SELECT AVG(Price) FROM Product WHERE Type LIKE '%Satı%'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
         public int AvarageRoomCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT AVG(RoomCount) FROM Product_DETAILS";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int CategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT COUNT(*) FROM Category";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string CategoryNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT TOP 1 C.CategoryName as category,COUNT(*) AS sayi FROM PRODUCT AS P JOIN Category AS C ON C.ID = P.ProductCategory GROUP BY C.CategoryName ORDER BY sayi DESC";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string CityNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT TOP 1 City, COUNT(*) as sayi FROM Product GROUP BY City ORDER BY sayi DESC";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int DifferentCityCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT COUNT(DISTINCT(City)) FROM Product";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string EmployeeNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Name,COUNT(*) AS productCount FROM Product AS P JOIN Employee AS E ON E.ID = P.EmployeeID GROUP BY Name ORDER BY productCount DESC";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public decimal LastProductPrice()
         {
-            throw new NotImplementedException();
+            string query = "SELECT TOP 1 Price FROM Product ORDER BY ID DESC";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string NewestBuildingYear()
         {
-            throw new NotImplementedException();
+            string query = "SELECT TOP 1 BuildYear FROM Product_DETAILS ORDER BY 1 DESC";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string OldestBuildingYear()
         {
-            throw new NotImplementedException();
+            string query = "SELECT TOP 1 BuildYear FROM Product_DETAILS ORDER BY 1 ASC";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int PassiveCategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT COUNT(*) FROM Category WHERE CategoryStatus = 0";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public int ProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT COUNT(*) FROM Product";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
     }
 }
