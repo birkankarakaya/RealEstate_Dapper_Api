@@ -2,11 +2,11 @@
 {
     public class CreateEmployeeDto
     {
-        public string Name { get; set; }
-        public string Title { get; set; }
-        public string Mail { get; set; }
-        public string Phone { get; set; }
-        public string ImageUrl { get; set; }
-        public bool Status { get; set; }
+        public string name { get; set; }
+        public string title { get; set; }
+        public string mail { get; set; }
+        public string phone { get; set; }
+        public string imageUrl { get; set; }
+        public bool status { get; set; }
     }
 }

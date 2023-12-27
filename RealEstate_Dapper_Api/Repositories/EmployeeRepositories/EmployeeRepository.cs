@@ -16,11 +16,11 @@ namespace RealEstate_Dapper_Api.Repositories.EmployeeRepositories
         {
             string query = "INSERT INTO Employee (Name, Title, Mail, Phone, ImageUrl, Status) VALUES (@name, @title, @mail, @phone, @imageUrl, @status)";
             var parameters = new DynamicParameters();
-            parameters.Add("@name", employeeDto.Name);
-            parameters.Add("@title", employeeDto.Title);
-            parameters.Add("@mail", employeeDto.Mail);
-            parameters.Add("@phone", employeeDto.Phone);
-            parameters.Add("@imageUrl", employeeDto.ImageUrl);
+            parameters.Add("@name", employeeDto.name);
+            parameters.Add("@title", employeeDto.title);
+            parameters.Add("@mail", employeeDto.mail);
+            parameters.Add("@phone", employeeDto.phone);
+            parameters.Add("@imageUrl", employeeDto.imageUrl);
             parameters.Add("@status", true);
 
             using (var connection = _context.CreateConnection())
@@ -66,13 +66,13 @@ namespace RealEstate_Dapper_Api.Repositories.EmployeeRepositories
         {
             string query = "UPDATE Employee SET Name = @name, Title = @title, Mail = @mail, Phone = @phone, ImageUrl = @imageUrl, Status = @status WHERE ID = @employeeID";
             var parameters = new DynamicParameters();
-            parameters.Add("@name", employeeDto.Name);
-            parameters.Add("@title", employeeDto.Title);
-            parameters.Add("@mail", employeeDto.Mail);
-            parameters.Add("@phone", employeeDto.Phone);
-            parameters.Add("@imageUrl", employeeDto.ImageUrl);
-            parameters.Add("@status", employeeDto.Status);
-            parameters.Add("@employeeID", employeeDto.ID);
+            parameters.Add("@name", employeeDto.name);
+            parameters.Add("@title", employeeDto.title);
+            parameters.Add("@mail", employeeDto.mail);
+            parameters.Add("@phone", employeeDto.phone);
+            parameters.Add("@imageUrl", employeeDto.imageUrl);
+            parameters.Add("@status", employeeDto.status);
+            parameters.Add("@employeeID", employeeDto.id);
 
             using (var connection = _context.CreateConnection())
             {
