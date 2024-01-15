@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
+    int count = 0;
 }
 
 
@@ -26,13 +27,15 @@
                                 <th scope="col">Güncelle</th>
                                 <th scope="col">Sil</th>
                                 <th scope="col">Sitede gör</th>
+                                <th scope="col">Günün Fırsatı</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                count++;
                                 <tr>
-                                    <th scope="row">@item.id</th>
+                                    <th scope="row">@count</th>
                                     <td>@item.title</td>
                                     <td>@item.city</td>
                                     <td>@item.district</td>
@@ -42,6 +45,18 @@
                                     <td><a href="/Product/UpdateProduct/@item.id" class="btn btn-outline-success">Güncelle</a></td>
                                     <td><a href="/Product/DeleteProduct/@item.id" class="btn btn-outline-danger">Sil</a></td>
                                     <td><a href="/Product/ProductDetail/@item.id" class="btn btn-outline-primary">Sitede gör</a></td>
+                                    <td>
+                                        @if (item.dealOfTheDay == true)
+                                        {
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.id" class="btn btn-outline-secondary">Fırsattan Çık</a>
+                                        }
+
+                                        @if (item.dealOfTheDay == false)
+                                        {
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.id" class="btn btn-warning">Fırsat Yap</a>
+                                        }
+
+                                    </td>
                                 </tr>
                             }
                         </tbody>
