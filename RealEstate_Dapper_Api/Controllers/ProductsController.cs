@@ -42,5 +42,12 @@ namespace RealEstate_Dapper_Api.Controllers
             _productRepository.ProductDealOfTheDayStatusChangeToFalse(id);
             return Ok("Günün Fırsatlarından Çıkarıldı!");
         }
+
+        [HttpGet("LastFiveProductList")]
+        public async Task<IActionResult> LastFiveProductList()
+        {
+            var values = await _productRepository.GetLastFiveProductAsync();
+            return Ok(values);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace RealEstate_Dapper_UI.Dtos.ProductDtos
 {
-    public class ResultProductDto
+    public class ResultLastFiveProductsDto
     {
         public int id { get; set; }
         public DateTime createDate { get; set; }

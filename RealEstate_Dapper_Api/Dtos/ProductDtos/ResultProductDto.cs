@@ -3,6 +3,7 @@
     public class ResultProductDto
     {
         public int ID { get; set; }
+        public DateTime CreateDate { get; set; }
         public string Title { get; set; }
         public decimal Price { get; set; }
         public string City { get; set; }
