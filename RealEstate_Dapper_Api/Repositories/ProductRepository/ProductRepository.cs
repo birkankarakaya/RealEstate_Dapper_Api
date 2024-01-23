@@ -25,7 +25,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
-            string query = "SELECT P.ID, P.Title, P.Price, P.City, P.District, C.CategoryName, P.CoverImage, P.Type, P.Address, P.DealOfTheDay FROM Product AS P INNER JOIN Category AS C ON P.ProductCategory = C.ID";
+            string query = "SELECT P.ID, P.Title, P.Price, P.City, P.District, C.CategoryName, P.CoverImage, P.Type, P.Address, P.DealOfTheDay FROM Product AS P JOIN Category AS C ON P.ProductCategory = C.ID";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
@@ -35,7 +35,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultLastFiveProductsDto>> GetLastFiveProductAsync()
         {
-            string query = "SELECT TOP(5) * FROM Product ORDER BY ID DESC";
+            string query = "SELECT TOP(5) P.ID, P.Title, P.Price, P.City, P.District, C.CategoryName, P.Type FROM Product AS P JOIN Category AS C ON P.ProductCategory = C.ID ORDER BY ID DESC";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLastFiveProductsDto>(query);

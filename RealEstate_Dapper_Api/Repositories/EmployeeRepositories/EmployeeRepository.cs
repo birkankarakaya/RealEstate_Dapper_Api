@@ -12,6 +12,7 @@ namespace RealEstate_Dapper_Api.Repositories.EmployeeRepositories
         {
             _context = context;
         }
+
         public async void CreateEmployee(CreateEmployeeDto employeeDto)
         {
             string query = "INSERT INTO Employee (Name, Title, Mail, Phone, ImageUrl, Status) VALUES (@name, @title, @mail, @phone, @imageUrl, @status)";
